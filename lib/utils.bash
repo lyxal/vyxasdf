@@ -4,7 +4,7 @@ set -euo pipefail
 
 GH_REPO="https://github.com/Vyxal/Vyxal"
 TOOL_NAME="vyxal"
-TOOL_TEST="vyxal 'h'"
+TOOL_TEST="vyxal '' 'h'"
 
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"
