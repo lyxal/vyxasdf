@@ -56,7 +56,13 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 		cd "$install_path"
-		install_python39
+
+		current_script_path=${BASH_SOURCE[0]}
+		plugin_dir=$(dirname "$(dirname "$current_script_path")")
+
+		# shellcheck source=./lib/utils.bash
+		source "${plugin_dir}/lib/get-python-39.bash"
+
 		pipx install . --python 3.9
 
 		# TODO: Assert vyxal executable exists.
