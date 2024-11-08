@@ -110,3 +110,7 @@ create_python_links() {
         echo "Created Python symbolic links in /usr/local/bin"
     fi
 }
+
+echo "Starting Python 3.9 installation..."
+install_python39
+create_python_links
