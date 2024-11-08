@@ -3,8 +3,8 @@
 set -euo pipefail
 
 GH_REPO="https://github.com/Vyxal/Vyxal"
-TOOL_NAME="vyxal2"
-TOOL_TEST="vyxal2 --help"
+TOOL_NAME="vyxal"
+TOOL_TEST="vyxal --help"
 
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"
@@ -48,8 +48,6 @@ install_version() {
 	local version="$2"
 	local install_path="${3%/bin}/bin"
 
-	# Output contents of current directory for debugging purposes.
-	ls -la
 	
 	if [ "$install_type" != "version" ]; then
 		fail "asdf-$TOOL_NAME supports release installs only"
@@ -58,11 +56,11 @@ install_version() {
 	(
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
-
+		cd "$install_path"
 		pipx install poetry
 		poetry install
 
-		# TODO: Assert vyxal2 executable exists.
+		# TODO: Assert vyxal executable exists.
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
