@@ -49,7 +49,7 @@ install_version() {
 	local install_path="${3%/bin}/bin"
 
 	# Output the current directory for debugging purposes.
-	pwd
+	ls
 
 	if [ "$install_type" != "version" ]; then
 		fail "asdf-$TOOL_NAME supports release installs only"
