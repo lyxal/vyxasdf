@@ -57,7 +57,7 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 		cd "$install_path"
-		pipx install .
+		pipx install . --python 3.9
 
 		# TODO: Assert vyxal executable exists.
 		local tool_cmd
