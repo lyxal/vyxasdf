@@ -54,7 +54,6 @@ install & manage versions.
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
-[Thanks goes to these contributors](https://github.com/lyxal/asdf-vyxal2/graphs/contributors)!
 
 # License
 
