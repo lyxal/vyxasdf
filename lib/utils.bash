@@ -48,6 +48,9 @@ install_version() {
 	local version="$2"
 	local install_path="${3%/bin}/bin"
 
+	# Output the current directory for debugging purposes.
+	pwd
+
 	if [ "$install_type" != "version" ]; then
 		fail "asdf-$TOOL_NAME supports release installs only"
 	fi
@@ -56,7 +59,6 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-		python3 -m pip install --user pipx
 		pipx install poetry
 		poetry install
 
