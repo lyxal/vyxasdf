@@ -56,6 +56,10 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
+		python3 -m pip install --user pipx
+		pipx install poetry
+		poetry install
+
 		# TODO: Assert vyxal2 executable exists.
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
