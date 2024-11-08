@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/lyxal/vyxasdf/compare/v1.0.0...v1.1.0) (2024-11-08)
+
+
+### Features
+
+* split the funny list all command over multiple lines ([e36a435](https://github.com/lyxal/vyxasdf/commit/e36a435101fbac31c63c825e91b129198c67dcdf))
+
 ## 1.0.0 (2024-11-08)
 
 
