@@ -57,8 +57,7 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 		cd "$install_path"
-		pipx install poetry
-		poetry install
+		pipx install
 
 		# TODO: Assert vyxal executable exists.
 		local tool_cmd
