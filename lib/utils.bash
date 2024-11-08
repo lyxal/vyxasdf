@@ -50,7 +50,7 @@ install_version() {
 	local version="$2"
 	local install_path="${3%/bin}/bin"
 
-	source ./get-python-39.bash
+	source get-python-39.bash
 
 	
 	if [ "$install_type" != "version" ]; then
