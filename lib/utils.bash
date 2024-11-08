@@ -6,62 +6,6 @@ GH_REPO="https://github.com/Vyxal/Vyxal"
 TOOL_NAME="vyxal"
 TOOL_TEST="vyxal --help"
 
-# Source the Python installer script
-source_python_installer() {
-    local installer_path="$1"
-    if [ ! -f "$installer_path" ]; then
-        echo "Error: Python installer script not found at $installer_path"
-        return 1
-    fi
-    
-    # Source the installer script
-    source "$installer_path"
-    
-    # Check if required functions are available
-    if ! declare -F install_python39 > /dev/null; then
-        echo "Error: Required functions not found in installer script"
-        return 1
-    fi
-}
-
-# Function to ensure Python 3.9 is available
-ensure_python39() {
-    local installer_script="$1"
-    
-    # Check if Python 3.9 is already installed
-    if command -v python3.9 >/dev/null 2>&1; then
-        echo "Python 3.9 is already installed"
-        python3.9 --version
-        return 0
-    fi
-    
-    echo "Python 3.9 not found, installing..."
-    
-    # Source the installer
-    if ! source_python_installer "$installer_script"; then
-        echo "Failed to source Python installer script"
-        return 1
-    fi
-    
-    # Run the installation
-    install_python39
-    
-    # Verify installation
-    if ! command -v python3.9 >/dev/null 2>&1; then
-        echo "Failed to install Python 3.9"
-        return 1
-    fi
-    
-    echo "Python 3.9 installation completed successfully"
-    return 0
-}
-
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-INSTALLER_SCRIPT="$SCRIPT_DIR/install_python39.sh"
-
-# Call the function to ensure Python 3.9 is installed
-ensure_python39 "$INSTALLER_SCRIPT"
-
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"
 	exit 1
@@ -112,6 +56,7 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 		cd "$install_path"
+		install_python39
 		pipx install . --python 3.9
 
 		# TODO: Assert vyxal executable exists.
