@@ -18,6 +18,7 @@
 # Dependencies
 
 - `bash`, `curl`, `tar`, and [POSIX utilities](https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html).
+- `poetry` for building vyxal2 from source.
 
 
 # Install
