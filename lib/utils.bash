@@ -2,8 +2,7 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for vyxal2.
-GH_REPO="https://github.com/lyxal/vyxasdf"
+GH_REPO="https://github.com/Vyxal/Vyxal"
 TOOL_NAME="vyxal2"
 TOOL_TEST="vyxal2 --help"
 
@@ -14,7 +13,6 @@ fail() {
 
 curl_opts=(-fsSL)
 
-# NOTE: You might want to remove this if vyxal2 is not hosted on GitHub releases.
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
 	curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
 fi
@@ -31,8 +29,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-	# TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-	# Change this function if vyxal2 has other means of determining installable versions.
 	list_github_tags
 }
 
@@ -40,8 +36,6 @@ download_release() {
 	local version filename url
 	version="$1"
 	filename="$2"
-
-	# TODO: Adapt the release URL convention for vyxal2
 	url="$GH_REPO/archive/v${version}.tar.gz"
 
 	echo "* Downloading $TOOL_NAME release $version..."
