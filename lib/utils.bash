@@ -63,9 +63,11 @@ install_version() {
 		# shellcheck source=./lib/utils.bash
 		source "${plugin_dir}/lib/get-python-39.bash"
 
+  python3 -m pip install --user pipx
+  python3 -m pipx ensurepath
+
 		pipx install . --python 3.9
 
-		# TODO: Assert vyxal executable exists.
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
