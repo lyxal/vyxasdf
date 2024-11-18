@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/lyxal/vyxasdf/compare/v1.1.0...v1.1.1) (2024-11-18)
+
+
+### Bug Fixes
+
+* funny little typo ([add734f](https://github.com/lyxal/vyxasdf/commit/add734f36d03eef353ad8e51ea997971e96d4325))
+* use python 3.9 command ([16116d7](https://github.com/lyxal/vyxasdf/commit/16116d738a0d60c510a5af2c0bbc627d9786dea9))
+
 ## [1.1.0](https://github.com/lyxal/vyxasdf/compare/v1.0.0...v1.1.0) (2024-11-08)
 
 
