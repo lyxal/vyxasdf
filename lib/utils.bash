@@ -63,8 +63,8 @@ install_version() {
 		# shellcheck source=./lib/utils.bash
 		source "${plugin_dir}/lib/get-python-39.bash"
 
-  python3 -m pip install --user pipx
-  python3 -m pipx ensurepath
+  python3.9-m pip install --user pipx
+  python3.9 -m pipx ensurepath
 
 		pipx install . --python 3.9
 
