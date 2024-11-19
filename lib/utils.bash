@@ -71,7 +71,7 @@ install_version() {
 	        $pypath -m pip install --user pipx
 		$pypath -m pipx ensurepath
 
-		pipx install . --python $pypath
+		pipx install . --python $(which python3)
 
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
