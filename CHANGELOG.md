@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.3.0](https://github.com/lyxal/vyxasdf/compare/v1.2.0...v1.3.0) (2024-11-19)
+
+
+### Features
+
+* get the bot to touch its feet ([29d253a](https://github.com/lyxal/vyxasdf/commit/29d253a645e5ae849ed7be5f17305baa15950913))
+* I do not like asdf very much anymore ([373726e](https://github.com/lyxal/vyxasdf/commit/373726e37f2c4cadc74a6c417e2c18bd7b894e99))
+* Update utils.bash ([9afaa1a](https://github.com/lyxal/vyxasdf/commit/9afaa1a4adc1e6ec0a728c4424b700bad9a666ad))
+
+
+### Bug Fixes
+
+* ?? ([dcd73b8](https://github.com/lyxal/vyxasdf/commit/dcd73b8b239f8157369441037ff59d4731380422))
+* asdf is not fun ([78b006e](https://github.com/lyxal/vyxasdf/commit/78b006e294c684331c3100c6a6bd493fa98d9506))
+* has to be global ([09fd4ef](https://github.com/lyxal/vyxasdf/commit/09fd4ef63b3d7cfc30d3297cda9cbe08df9a51b8))
+* not global ([e3b47f0](https://github.com/lyxal/vyxasdf/commit/e3b47f064a62e9a063a1f5c0d9b3a7bc9506a83b))
+* thanks bash very cool ([bffd9d4](https://github.com/lyxal/vyxasdf/commit/bffd9d4fdc9aaebe311f7f50f590559113556dcb))
+* Update utils.bash ([4c3b854](https://github.com/lyxal/vyxasdf/commit/4c3b8548ab376c9d9a3964afce780c284527544f))
+* Update utils.bash ([ff4017c](https://github.com/lyxal/vyxasdf/commit/ff4017c9fee632b611da6b0823e24cb2dfaf810c))
+* Update utils.bash ([bcb5209](https://github.com/lyxal/vyxasdf/commit/bcb5209eede76760571ecc43f87485845d4d3a60))
+
 ## [1.2.0](https://github.com/lyxal/vyxasdf/compare/v1.1.1...v1.2.0) (2024-11-19)
 
 
