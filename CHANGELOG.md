@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/lyxal/vyxasdf/compare/v1.1.1...v1.2.0) (2024-11-19)
+
+
+### Features
+
+* trick release bot into making a release ([42b025c](https://github.com/lyxal/vyxasdf/commit/42b025c25bb82f882abfc21b39a6cbb70b44d600))
+
 ## [1.1.1](https://github.com/lyxal/vyxasdf/compare/v1.1.0...v1.1.1) (2024-11-18)
 
 
