@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 # Function to detect OS
@@ -64,16 +63,48 @@ install_python39() {
             case "$dist" in
                 ubuntu|debian)
                     echo "Installing Python 3.9 on Ubuntu/Debian..."
-                    sudo apt-get update
-                    sudo apt-get install -y software-properties-common
-                    sudo add-apt-repository -y ppa:deadsnakes/ppa
-                    sudo apt-get update
-                    sudo apt-get install -y python3.9 python3.9-venv python3.9-dev
+                    # Use local user installation method
+                    if [ ! -d "$HOME/.local/bin" ]; then
+                        mkdir -p "$HOME/.local/bin"
+                    fi
+                    
+                    # Download Python source and compile locally
+                    cd /tmp
+                    wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz
+                    tar xzf Python-3.9.13.tgz
+                    cd Python-3.9.13
+                    
+                    # Configure and install to user's local directory
+                    ./configure --prefix="$HOME/.local" --enable-optimizations
+                    make
+                    make install
+                    
+                    # Update PATH
+                    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+                    source ~/.bashrc
                     ;;
                     
                 centos|rhel|fedora)
                     echo "Installing Python 3.9 on CentOS/RHEL/Fedora..."
-                    sudo dnf install -y python39 python39-devel
+                    # Similar local user installation method
+                    if [ ! -d "$HOME/.local/bin" ]; then
+                        mkdir -p "$HOME/.local/bin"
+                    fi
+                    
+                    # Download Python source and compile locally
+                    cd /tmp
+                    wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz
+                    tar xzf Python-3.9.13.tgz
+                    cd Python-3.9.13
+                    
+                    # Configure and install to user's local directory
+                    ./configure --prefix="$HOME/.local" --enable-optimizations
+                    make
+                    make install
+                    
+                    # Update PATH
+                    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+                    source ~/.bashrc
                     ;;
                     
                 *)
@@ -100,14 +131,14 @@ install_python39() {
     fi
 }
 
-# Create symbolic links function
+# Create symbolic links in user's local bin
 create_python_links() {
     if command_exists python3.9; then
-        # Create aliases in /usr/local/bin
-        sudo mkdir -p /usr/local/bin
-        sudo ln -sf "$(command -v python3.9)" /usr/local/bin/python3.9
-        sudo ln -sf "$(command -v python3.9)" /usr/local/bin/python
-        echo "Created Python symbolic links in /usr/local/bin"
+        # Create links in user's local bin
+        mkdir -p "$HOME/.local/bin"
+        ln -sf "$(command -v python3.9)" "$HOME/.local/bin/python3.9"
+        ln -sf "$(command -v python3.9)" "$HOME/.local/bin/python"
+        echo "Created Python symbolic links in $HOME/.local/bin"
     fi
 }
 
