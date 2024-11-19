@@ -63,7 +63,6 @@ install_version() {
 
 		asdf plugin-add python
                 asdf install python 3.9.0
-                asdf local python 3.9.0
 		
 	        python3 -m pip install --user pipx
 		python3 -m pipx ensurepath
