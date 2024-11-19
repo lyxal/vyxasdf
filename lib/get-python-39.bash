@@ -20,6 +20,33 @@ get_linux_dist() {
     fi
 }
 
+# Install pyenv dependencies
+install_pyenv_deps() {
+    local dist
+    dist=$(get_linux_dist)
+
+    case "$dist" in
+        ubuntu|debian)
+            echo "Installing pyenv dependencies for Ubuntu/Debian..."
+            apt-get update
+            apt-get install -y make build-essential libssl-dev zlib1g-dev \
+                libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+                libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev \
+                liblzma-dev python-openssl git
+            ;;
+        centos|rhel|fedora)
+            echo "Installing pyenv dependencies for CentOS/RHEL/Fedora..."
+            yum install -y make gcc zlib-devel bzip2 bzip2-devel readline-devel \
+                sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel \
+                git
+            ;;
+        *)
+            echo "Unsupported Linux distribution: $dist"
+            exit 1
+            ;;
+    esac
+}
+
 # Function to check if command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -57,51 +84,27 @@ install_python39() {
             ;;
             
         linux)
-            local dist
-            dist=$(get_linux_dist)
+            # Install pyenv dependencies
+            install_pyenv_deps
             
-            case "$dist" in
-                ubuntu|debian)
-                    echo "Installing Python 3.9 on Ubuntu/Debian using pyenv..."
-                    # Install pyenv for user-level Python management
-                    if ! command_exists pyenv; then
-                        curl https://pyenv.run | bash
-                        
-                        # Update shell config to include pyenv
-                        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-                        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-                        echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
-                        source ~/.bashrc
-                    fi
-                    
-                    # Install Python 3.9
-                    pyenv install 3.9.13
-                    pyenv global 3.9.13
-                    ;;
-                    
-                centos|rhel|fedora)
-                    echo "Installing Python 3.9 on CentOS/RHEL/Fedora using pyenv..."
-                    # Install pyenv for user-level Python management
-                    if ! command_exists pyenv; then
-                        curl https://pyenv.run | bash
-                        
-                        # Update shell config to include pyenv
-                        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-                        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-                        echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
-                        source ~/.bashrc
-                    fi
-                    
-                    # Install Python 3.9
-                    pyenv install 3.9.13
-                    pyenv global 3.9.13
-                    ;;
-                    
-                *)
-                    echo "Unsupported Linux distribution: $dist"
-                    exit 1
-                    ;;
-            esac
+            # Install pyenv if not exists
+            if ! command_exists pyenv; then
+                echo "Installing pyenv..."
+                curl https://pyenv.run | bash
+                
+                # Update shell config to include pyenv
+                echo '
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+' >> ~/.bashrc
+                source ~/.bashrc
+            fi
+            
+            # Install Python 3.9
+            pyenv install 3.9.13
+            pyenv global 3.9.13
             ;;
             
         *)
@@ -123,3 +126,4 @@ install_python39() {
 
 echo "Starting Python 3.9 installation..."
 install_python39
+ source ~/.bashrc
