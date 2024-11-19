@@ -6,6 +6,7 @@ GH_REPO="https://github.com/Vyxal/Vyxal"
 TOOL_NAME="vyxal"
 TOOL_TEST="vyxal '' 'h'"
 
+
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"
 	exit 1
