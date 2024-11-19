@@ -65,7 +65,7 @@ install_version() {
                 asdf install python 3.9.0
 		asdf global python 3.9.0
 
-                pypath = $(asdf where python)
+                pypath=$(asdf where python)
 		
 	        $pypath -m pip install --user pipx
 		$pypath -m pipx ensurepath
