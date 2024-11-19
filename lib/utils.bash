@@ -61,11 +61,12 @@ install_version() {
 		current_script_path=${BASH_SOURCE[0]}
 		plugin_dir=$(dirname "$(dirname "$current_script_path")")
 
-		# shellcheck source=./lib/utils.bash
-		source "${plugin_dir}/lib/get-python-39.bash"
-
-  python3 -m pip install --user pipx
-  python3 -m pipx ensurepath
+		asdf plugin-add python
+                asdf install python 3.9.0
+                asdf local python 3.9.0
+		
+	        python3 -m pip install --user pipx
+		python3 -m pipx ensurepath
 
 		pipx install . --python 3.9
 
