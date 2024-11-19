@@ -4,7 +4,7 @@
 set -e
 
 # Default Python version if not specified
-PYTHON_VERSION="${1:-3.9.16}"
+PYTHON_VERSION="3.9.0"
 
 # Function to extract major.minor version
 get_major_minor() {
