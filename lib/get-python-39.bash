@@ -62,49 +62,39 @@ install_python39() {
             
             case "$dist" in
                 ubuntu|debian)
-                    echo "Installing Python 3.9 on Ubuntu/Debian..."
-                    # Use local user installation method
-                    if [ ! -d "$HOME/.local/bin" ]; then
-                        mkdir -p "$HOME/.local/bin"
+                    echo "Installing Python 3.9 on Ubuntu/Debian using pyenv..."
+                    # Install pyenv for user-level Python management
+                    if ! command_exists pyenv; then
+                        curl https://pyenv.run | bash
+                        
+                        # Update shell config to include pyenv
+                        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+                        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+                        echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+                        source ~/.bashrc
                     fi
                     
-                    # Download Python source and compile locally
-                    cd /tmp
-                    wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz
-                    tar xzf Python-3.9.13.tgz
-                    cd Python-3.9.13
-                    
-                    # Configure and install to user's local directory
-                    ./configure --prefix="$HOME/.local" --enable-optimizations
-                    make
-                    make install
-                    
-                    # Update PATH
-                    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-                    source ~/.bashrc
+                    # Install Python 3.9
+                    pyenv install 3.9.13
+                    pyenv global 3.9.13
                     ;;
                     
                 centos|rhel|fedora)
-                    echo "Installing Python 3.9 on CentOS/RHEL/Fedora..."
-                    # Similar local user installation method
-                    if [ ! -d "$HOME/.local/bin" ]; then
-                        mkdir -p "$HOME/.local/bin"
+                    echo "Installing Python 3.9 on CentOS/RHEL/Fedora using pyenv..."
+                    # Install pyenv for user-level Python management
+                    if ! command_exists pyenv; then
+                        curl https://pyenv.run | bash
+                        
+                        # Update shell config to include pyenv
+                        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+                        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+                        echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+                        source ~/.bashrc
                     fi
                     
-                    # Download Python source and compile locally
-                    cd /tmp
-                    wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz
-                    tar xzf Python-3.9.13.tgz
-                    cd Python-3.9.13
-                    
-                    # Configure and install to user's local directory
-                    ./configure --prefix="$HOME/.local" --enable-optimizations
-                    make
-                    make install
-                    
-                    # Update PATH
-                    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-                    source ~/.bashrc
+                    # Install Python 3.9
+                    pyenv install 3.9.13
+                    pyenv global 3.9.13
                     ;;
                     
                 *)
@@ -131,17 +121,5 @@ install_python39() {
     fi
 }
 
-# Create symbolic links in user's local bin
-create_python_links() {
-    if command_exists python3.9; then
-        # Create links in user's local bin
-        mkdir -p "$HOME/.local/bin"
-        ln -sf "$(command -v python3.9)" "$HOME/.local/bin/python3.9"
-        ln -sf "$(command -v python3.9)" "$HOME/.local/bin/python"
-        echo "Created Python symbolic links in $HOME/.local/bin"
-    fi
-}
-
 echo "Starting Python 3.9 installation..."
 install_python39
-create_python_links
