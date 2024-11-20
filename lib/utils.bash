@@ -71,7 +71,8 @@ install_version() {
                 # Clear the stuff from the vyxal repo
                 rm -rf *
                 mv $HOME/.local/bin/vyxal .
-                $install_path/$tool_cmd
+                echo "$install_path/$tool_cmd"
+		$("$install_path/$tool_cmd")
                 ls .
 
 		# Check if vyxal command exists
