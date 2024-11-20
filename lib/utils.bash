@@ -71,7 +71,7 @@ install_version() {
                 
                 mv $HOME/.local/bin/vyxal ./vyxal2
 		mv $(asdf where python) .
-		sed -i "1c#!./3.9.0/bin/python3" vyxal2
+		sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
                 cat vyxal2
                 ls .
 
