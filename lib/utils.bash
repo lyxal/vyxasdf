@@ -66,7 +66,7 @@ install_version() {
 		asdf local python 3.9.0
 
                 pypath=$(which python3)
-	        $pypath -m pip install . --python $asdfpath
+	        $pypath -m pip install . --python $(asdf which python)
 
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
