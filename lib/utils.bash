@@ -68,15 +68,14 @@ install_version() {
                 pypath=$(which python3)
 	        $pypath -m pip install . --user
 
+                mv $HOME/.local/bin/vyxal .
+
 		# Check if vyxal command exists
-		if command -v vyxal &> /dev/null
-		then
-		    echo "Vyxal is installed"
-		    exit 0
-		else
-		    echo "Vyxal is not installed" >&2
-		    exit 1
-		fi
+	        local tool_cmd
+		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
+
+		echo "$TOOL_NAME $version installation was successful!"
 	) || (
 		rm -rf "$install_path"
 		fail "An error occurred while installing $TOOL_NAME $version."
