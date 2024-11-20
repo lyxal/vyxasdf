@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/lyxal/vyxasdf/compare/v1.4.0...v1.5.0) (2024-11-20)
+
+
+### Features
+
+* I think this works ([ba4a28a](https://github.com/lyxal/vyxasdf/commit/ba4a28ae9b3b88d1fb3f9a317c056927c4b0ebd2))
+
 ## [1.4.0](https://github.com/lyxal/vyxasdf/compare/v1.3.0...v1.4.0) (2024-11-20)
 
 
