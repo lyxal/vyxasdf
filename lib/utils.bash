@@ -66,14 +66,7 @@ install_version() {
 		asdf local python 3.9.0
 
                 pypath=$(which python3)
-		asdfpath=$(asdf which python)
-		echo $pypath
-                echo $(asdf where python)
-		
-	        $pypath -m pip install --user pipx
-		$pypath -m pipx ensurepath
-
-		pipx install . --python $asdfpath
+	        $pypath -m pip install . --python $asdfpath
 
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
