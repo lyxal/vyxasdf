@@ -68,14 +68,11 @@ install_version() {
                 pypath=$(which python3)
 	        $pypath -m pip install . --user
 
-                ls .
-		pwd
-                echo $install_path
-
                 # Clear the stuff from the vyxal repo
                 rm -rf *
-
                 mv $HOME/.local/bin/vyxal .
+
+                ls .
 
 		# Check if vyxal command exists
 	        local tool_cmd
