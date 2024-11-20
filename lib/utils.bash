@@ -3,8 +3,8 @@
 set -euo pipefail
 
 GH_REPO="https://github.com/Vyxal/Vyxal"
-TOOL_NAME="vyxal"
-TOOL_TEST="vyxal '' 'h'"
+TOOL_NAME="vyxal2"
+TOOL_TEST="vyxal2 '' 'h'"
 
 
 fail() {
@@ -68,9 +68,8 @@ install_version() {
                 pypath=$(which python3)
 	        $pypath -m pip install . --user
 
-                # Clear the stuff from the vyxal repo
-                rm -rf *
-                mv $HOME/.local/bin/vyxal .
+                
+                mv $HOME/.local/bin/vyxal ./vyxal2
 
 
 		# Check if vyxal command exists
