@@ -73,8 +73,7 @@ install_version() {
                 mv $HOME/.local/bin/vyxal ./vyxal2
 		mv $(asdf where python) .
 
-                
-
+                cat vyxal2
                 ls .
 
 
