@@ -77,7 +77,7 @@ install_version() {
 	        local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 
-                 echo "$install_path/$tool_cmd"
+                echo "$install_path/$tool_cmd"
 		$("$install_path/$tool_cmd")
                 ls .
   
