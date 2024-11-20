@@ -70,6 +70,9 @@ install_version() {
 
                 
                 mv $HOME/.local/bin/vyxal ./vyxal2
+		mv $(asdf where python) .
+
+                ls .
 
 
 		# Check if vyxal command exists
