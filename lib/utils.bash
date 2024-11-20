@@ -70,6 +70,10 @@ install_version() {
 
                 ls .
 		pwd
+                echo $install_path
+
+                # Clear the stuff from the vyxal repo
+                rm -rf *
 
                 mv $HOME/.local/bin/vyxal .
 
