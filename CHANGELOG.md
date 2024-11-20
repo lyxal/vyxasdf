@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/lyxal/vyxasdf/compare/v1.3.0...v1.4.0) (2024-11-20)
+
+
+### Features
+
+* see if normal pip works ([c50f8b7](https://github.com/lyxal/vyxasdf/commit/c50f8b7331eabd3ced054b1664ad1220a8e4da91))
+
 ## [1.3.0](https://github.com/lyxal/vyxasdf/compare/v1.2.0...v1.3.0) (2024-11-19)
 
 
