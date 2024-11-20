@@ -78,7 +78,7 @@ install_version() {
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 
                 echo "$install_path/$tool_cmd"
-		$("$install_path/$tool_cmd") '' 'h'
+		$("$install_path/$tool_cmd '' 'h'")
                 ls .
   
 		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
