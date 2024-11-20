@@ -66,13 +66,12 @@ install_version() {
 		asdf local python 3.9.0
 
                 pypath=$(which python3)
+		pyloc=$(asdf where python)
 	        $pypath -m pip install . --user
-
-                echo $(asdf where python)
                 
                 mv $HOME/.local/bin/vyxal ./vyxal2
 		mv $(asdf where python) .
-
+		sed -i "1s|^#!/$pyloc|#!./3.9.0/bin/python3|" vyxal2
                 cat vyxal2
                 ls .
 
