@@ -68,6 +68,9 @@ install_version() {
                 pypath=$(which python3)
 	        $pypath -m pip install . --user
 
+                ls .
+		pwd
+
                 mv $HOME/.local/bin/vyxal .
 
 		# Check if vyxal command exists
