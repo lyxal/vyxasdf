@@ -71,13 +71,12 @@ install_version() {
                 # Clear the stuff from the vyxal repo
                 rm -rf *
                 mv $HOME/.local/bin/vyxal .
-
+                ./vyxal '' 'h'
                 ls .
 
 		# Check if vyxal command exists
 	        local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
-                $tool_cmd '' 'h'
 		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
 
 		echo "$TOOL_NAME $version installation was successful!"
