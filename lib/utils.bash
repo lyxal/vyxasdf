@@ -68,9 +68,12 @@ install_version() {
                 pypath=$(which python3)
 	        $pypath -m pip install . --user
 
+                echo $(asdf where python)
                 
                 mv $HOME/.local/bin/vyxal ./vyxal2
 		mv $(asdf where python) .
+
+                
 
                 ls .
 
