@@ -64,7 +64,7 @@ install_version() {
         asdf local python 3.9.0
 
         PYTHON_CMD=$(asdf which python)
-        $PYTHON_CMD -m venv .venv
+        "$PYTHON_CMD" -m venv .venv
 
         echo "these are the field"
         ls .
