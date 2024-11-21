@@ -66,6 +66,9 @@ install_version() {
         PYTHON_CMD=$(asdf which python)
         "$PYTHON_CMD" -m venv vynv --copies
         source vynv/bin/activate
+
+python -m venv --help
+python -c "import sys; print(sys.prefix)"
         
         $PYTHON_CMD -m pip install . --user
 
