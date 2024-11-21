@@ -63,6 +63,9 @@ install_version() {
         PYTHON_PATH=$(asdf which python3)
         PYTHON_DIR=$(dirname "$(dirname "$PYTHON_PATH")")
 
+        echo "PYTHON_PATH = $PYTHON_PATH"
+	echo "PYTHON_DIR = $PYTHON_DIR"
+
         mkdir -p "$install_path"
         cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
         cd "$install_path"
@@ -72,7 +75,7 @@ install_version() {
 
         # Move vyxal package
 	mv $HOME/.local/bin/vyxal ./vyxal2
-        mv $pyloc .
+        mv $PYTHON_DIR .
 
         # Update the shebang to use the exact Python path
         sed -i "1c#!$PYTHON_PATH" vyxal2
