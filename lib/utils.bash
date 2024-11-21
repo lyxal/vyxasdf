@@ -4,7 +4,7 @@ set -euo pipefail
 
 GH_REPO="https://github.com/Vyxal/Vyxal"
 TOOL_NAME="vyxal2"
-TOOL_TEST="vyxal2 '' 'h'"
+TOOL_TEST="vyxal2 '' '⋎'"
 
 
 fail() {
@@ -78,11 +78,8 @@ install_version() {
 
  	cat > vyxal2 << EOF
  	#!/bin/bash
-        echo "\$@"
         ${VYXAL2} "\$@"
 EOF
-
-        echo $(cat vyxal2)
 
         chmod +x vyxal2
 
