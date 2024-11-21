@@ -87,4 +87,3 @@ install_version() {
         fail "An error occurred while installing $TOOL_NAME $version."
     )
 }
-}
