@@ -73,7 +73,7 @@ install_version() {
         
         $PYTHON_CMD -m pip install . --user
 
-        ls .
+        $PYTHON_CMD -m pip show .
 
 
         # Verify the installation
