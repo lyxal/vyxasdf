@@ -65,24 +65,11 @@ install_version() {
 
         PYTHON_CMD=$(asdf which python)
         "$PYTHON_CMD" -m venv vynv --copies
-        which python # should apparently print the venv one
-
-        echo "these are the field"
-        ls .
-       
-        echo "activities"
-        source vynv/bin/activate
-
-echo "these are the field"
-        ls .
+ 
 
         find . -maxdepth 1 ! -name 'vynv' ! -name '.' -exec mv {} vynv/ \;
 
-        echo "beforkz" 
-        ls .
-        cd vynv
-        echo "amfseter" 
-        ls .
+        
         $PYTHON_CMD -m pip install . --user
 
 
