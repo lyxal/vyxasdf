@@ -78,7 +78,8 @@ install_version() {
 
  	cat > vyxal2 << EOF
  	#!/bin/bash
-        ${VYXAL2} \$@
+        echo "\$@"
+        ${VYXAL2} "\$@"
 EOF
 
         echo $(cat vyxal2)
