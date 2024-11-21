@@ -64,14 +64,14 @@ install_version() {
         
 
         PYTHON_CMD=$(asdf which python)
-        "$PYTHON_CMD" -m venv .venv --copies
+        "$PYTHON_CMD" -m venv vynv --copies
         which python # should apparently print the venv one
 
         echo "these are the field"
         ls .
        
         echo "activities"
-        source .venv/bin/activate
+        source vynv/bin/activate
 
 echo "these are the field"
         ls .
