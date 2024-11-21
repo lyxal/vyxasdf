@@ -61,7 +61,7 @@ install_version() {
         # Ensure Python 3.9 is fully installed via asdf
         asdf plugin-add python || true
         asdf install python 3.9.0 || true
-        
+        asdf local python 3.9.0
 
         PYTHON_CMD=$(asdf which python)
         "$PYTHON_CMD" -m venv vynv --copies
