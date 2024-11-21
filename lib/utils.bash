@@ -69,11 +69,7 @@ install_version() {
         
         $PYTHON_CMD -m pip install . --user
 
-        $PYTHON_CMD -m pip show .
-
-        cd vynv/lib
-        ls .
-        cd ../..
+        $PYTHON_CMD -m pip show vyxal 
 
         # Verify the installation
         local tool_cmd
