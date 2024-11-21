@@ -70,11 +70,15 @@ install_version() {
         # Use the specific Python from asdf to install
         "$PYTHON_PATH" -m pip install . --user
 
+        # Move vyxal package
+	mv $HOME/.local/bin/vyxal ./vyxal2
+        mv $pyloc .
+
         # Update the shebang to use the exact Python path
         sed -i "1c#!$PYTHON_PATH" vyxal2
 
         # Set LD_LIBRARY_PATH to include Python libraries
-        export LD_LIBRARY_PATH="$PYTHON_DIR/lib:$LD_LIBRARY_PATH"
+        export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:-}${LD_LIBRARY_PATH:+:}$library_path"
 
         # Verify the installation
         local tool_cmd
