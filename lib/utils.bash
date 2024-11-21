@@ -95,7 +95,7 @@ install_version() {
 	        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$library_dir"
 	    fi
 	    
-	    echo "Found Python library at: $library_path"
+	    echo "Found Python library at: $library_path - $library_dir"
 	else
 	    echo "Could not find libpython3.9.so.1.0"
 	fi
