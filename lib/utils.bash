@@ -76,6 +76,13 @@ install_version() {
 echo "these are the field"
         ls .
 
+        find . -maxdepth 1 ! -name 'vynv' ! -name '.' -exec mv {} vynv/ \;
+
+        echo "beforkz" 
+        ls .
+        cd vynv
+        echo "amfseter" 
+        ls .
         $PYTHON_CMD -m pip install . --user
 
 
