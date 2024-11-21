@@ -80,8 +80,24 @@ install_version() {
         # Update the shebang to use the exact Python path
         sed -i "1c#!$PYTHON_PATH" vyxal2
 
-        # Set LD_LIBRARY_PATH to include Python libraries
-        export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:-}${LD_LIBRARY_PATH:+:}$library_path"
+        # Find the library path
+	library_path=$(find -name "libpython3.9.so.1.0")
+	
+	if [ -n "$library_path" ]; then
+	    # Get the directory containing the library
+	    library_dir=$(dirname "$library_path")
+	    
+	    # Safely update LD_LIBRARY_PATH
+	    if [ -z "${LD_LIBRARY_PATH+x}" ]; then
+	        export LD_LIBRARY_PATH="$library_dir"
+	    else
+	        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$library_dir"
+	    fi
+	    
+	    echo "Found Python library at: $library_path"
+	else
+	    echo "Could not find libpython3.9.so.1.0"
+	fi
 
         # Verify the installation
         local tool_cmd
