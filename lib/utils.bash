@@ -63,13 +63,14 @@ install_version() {
         asdf install python 3.9.0 || true
         
 
-        PYTHON_CMD=$(python3.9.0)
+        PYTHON_CMD=$(asdf which python)
         "$PYTHON_CMD" -m venv .venv --copies
         which python # should apparently print the venv one
 
         echo "these are the field"
         ls .
        
+        echo "activities"
         source .venv/bin/activate
 
 echo "these are the field"
