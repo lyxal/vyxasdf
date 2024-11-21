@@ -59,47 +59,16 @@ install_version() {
         asdf install python 3.9.0 || true
         asdf local python 3.9.0
 
-        # Get the exact Python installation path
-        PYTHON_PATH=$(asdf which python3)
-        PYTHON_DIR=$(dirname "$(dirname "$PYTHON_PATH")")
+        PYTHON_CMD=$(asdf which python)
+        $PYTHON_CMD -m venv .venv
 
-        echo "PYTHON_PATH = $PYTHON_PATH"
-	echo "PYTHON_DIR = $PYTHON_DIR"
+        ls .
+        cd ..
+        ls .
+        source .venv/bin/activate
 
-        mkdir -p "$install_path"
-        cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
-        cd "$install_path"
+        python3 -m pip install . --user
 
-        # Use the specific Python from asdf to install
-        "$PYTHON_PATH" -m pip install . --user
-
-        # Move vyxal package
-	mv $HOME/.local/bin/vyxal ./vyxal2
-        mv $PYTHON_DIR .
-
-        # Update the shebang to use the exact Python path
-        sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
-	cat vyxal2
-
-        # Find the library path
-	library_path=$(find -name "libpython3.9.so.1.0")
-	
-	if [ -n "$library_path" ]; then
-	    # Get the directory containing the library
-	    library_dir=$(dirname "$library_path")
-            library_dir="${library_dir/\.\//$install_path/}"
-	    
-	    # Safely update LD_LIBRARY_PATH
-	    if [ -z "${LD_LIBRARY_PATH+x}" ]; then
-	        export LD_LIBRARY_PATH="$library_dir"
-	    else
-	        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$library_dir"
-	    fi
-	    
-	    echo "Found Python library at: $library_path - $library_dir"
-	else
-	    echo "Could not find libpython3.9.so.1.0"
-	fi
 
         # Verify the installation
         local tool_cmd
