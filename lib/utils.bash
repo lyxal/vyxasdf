@@ -45,49 +45,46 @@ download_release() {
 }
 
 install_version() {
-	local install_type="$1"
-	local version="$2"
-	local install_path="${3%/bin}/bin"
-	
-	if [ "$install_type" != "version" ]; then
-		fail "asdf-$TOOL_NAME supports release installs only"
-	fi
+    local install_type="$1"
+    local version="$2"
+    local install_path="${3%/bin}/bin"
+    
+    if [ "$install_type" != "version" ]; then
+        fail "asdf-$TOOL_NAME supports release installs only"
+    fi
 
-	(
-		mkdir -p "$install_path"
-		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
-		cd "$install_path"
+    (
+        # Ensure Python 3.9 is fully installed via asdf
+        asdf plugin-add python || true
+        asdf install python 3.9.0 || true
+        asdf local python 3.9.0
 
-		current_script_path=${BASH_SOURCE[0]}
-		plugin_dir=$(dirname "$(dirname "$current_script_path")")
+        # Get the exact Python installation path
+        PYTHON_PATH=$(asdf which python3)
+        PYTHON_DIR=$(dirname "$(dirname "$PYTHON_PATH")")
 
-		asdf plugin-add python
-                asdf install python 3.9.0
-		asdf local python 3.9.0
-  echo $PATH
+        mkdir -p "$install_path"
+        cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
+        cd "$install_path"
 
-                pypath=$(which python3)
-		pyloc=$(asdf where python)
-	        $pypath -m pip install . --user
-                
-                mv $HOME/.local/bin/vyxal ./vyxal2
-		mv $pyloc .
-		sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
+        # Use the specific Python from asdf to install
+        "$PYTHON_PATH" -m pip install . --user
 
-                library_path=$(find -name "libpython3.9.so.1.0")
-		export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$library_path
-		echo "Found Python library at: $library_path"
-		
+        # Update the shebang to use the exact Python path
+        sed -i "1c#!$PYTHON_PATH" vyxal2
 
-		# Check if vyxal command exists
-	        local tool_cmd
-		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
-  
-		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
+        # Set LD_LIBRARY_PATH to include Python libraries
+        export LD_LIBRARY_PATH="$PYTHON_DIR/lib:$LD_LIBRARY_PATH"
 
-		echo "$TOOL_NAME $version installation was successful!"
-	) || (
-		rm -rf "$install_path"
-		fail "An error occurred while installing $TOOL_NAME $version."
-	)
+        # Verify the installation
+        local tool_cmd
+        tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+        test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
+
+        echo "$TOOL_NAME $version installation was successful!"
+    ) || (
+        rm -rf "$install_path"
+        fail "An error occurred while installing $TOOL_NAME $version."
+    )
+}
 }
