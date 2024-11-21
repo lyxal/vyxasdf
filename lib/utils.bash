@@ -70,7 +70,7 @@ install_version() {
 
 
         
-        $VYTHON -m pip install . --user
+        $VYTHON -m pip install .
 
         $VYTHON -m pip show vyxal 
 
