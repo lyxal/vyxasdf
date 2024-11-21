@@ -65,16 +65,15 @@ install_version() {
 
         PYTHON_CMD=$(asdf which python)
         "$PYTHON_CMD" -m venv vynv --copies
- 
-
-        find . -maxdepth 1 ! -name 'vynv' ! -name '.' -exec mv {} vynv/ \;
-
-        cd vynv
+        source vynv/bin/activate
         
         $PYTHON_CMD -m pip install . --user
 
         $PYTHON_CMD -m pip show .
 
+        cd vynv/lib
+        ls .
+        cd ../..
 
         # Verify the installation
         local tool_cmd
@@ -83,7 +82,6 @@ install_version() {
 
         echo "$TOOL_NAME $version installation was successful!"
 
-cd 3.9.0/lib
 ls .
     ) || (
         rm -rf "$install_path"
