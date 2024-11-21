@@ -78,7 +78,8 @@ install_version() {
         mv $PYTHON_DIR .
 
         # Update the shebang to use the exact Python path
-        sed -i "1c#!$PYTHON_PATH" vyxal2
+        sed -i "1c#!./3.9.0/bin/python3" vyxal2
+	cat vyxal2
 
         # Find the library path
 	library_path=$(find -name "libpython3.9.so.1.0")
