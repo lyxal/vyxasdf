@@ -54,6 +54,10 @@ install_version() {
     fi
 
     (
+       mkdir -p "$install_path"
+	      	cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
+	      	cd "$install_path"
+
         # Ensure Python 3.9 is fully installed via asdf
         asdf plugin-add python || true
         asdf install python 3.9.0 || true
