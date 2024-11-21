@@ -74,8 +74,8 @@ install_version() {
 		mv $pyloc .
 		sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
 
-                library_path=$(find "$pyloc" -name "libpython3.9.so.1.0" 2>/dev/null | head -n 1)
-		    export LD_LIBRARY_PATH="$(dirname "$library_path"):${LD_LIBRARY_PATH:-}"
+                library_path=$(find "-name "libpython3.9.so.1.0")
+		  #  export LD_LIBRARY_PATH="$(dirname "$library_path"):${LD_LIBRARY_PATH:-}"
 		    echo "Found Python library at: $library_path"
 		
 
