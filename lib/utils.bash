@@ -78,10 +78,10 @@ install_version() {
 
  	cat > vyxal2 << EOF
  	#!/bin/bash
-        ${VYXAL2} "$@"
+        ${VYXAL2} \$@
 EOF
 
-        cat vyxal2
+        echo $(cat vyxal2)
 
         chmod +x vyxal2
 
