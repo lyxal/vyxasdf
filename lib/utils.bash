@@ -75,6 +75,7 @@ install_version() {
 
         # Move vyxal package
 	mv $HOME/.local/bin/vyxal ./vyxal2
+        mv $PYTHON_DIR .
 
         # Update the shebang to use the exact Python path
         sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
