@@ -65,14 +65,25 @@ install_version() {
 
         PYTHON_CMD=$(asdf which python)
         VYTHON="vynv/bin/python3" 
+	VYXAL2="$install_path/vynv/bin/vyxal"
+
+ 
         "$PYTHON_CMD" -m venv vynv --copies
         source vynv/bin/activate
 
-
-        
+ 
         $VYTHON -m pip install .
 
-        $VYTHON -m pip show vyxal 
+       	# Create a wrapper around the module in the venv
+
+ 	cat > vyxal2 << EOF
+ 	#!/bin/bash
+        ${VYXAL2} "$@"
+EOF
+
+        cat vyxal2
+
+        chmod +x vyxal2
 
         # Verify the installation
         local tool_cmd
