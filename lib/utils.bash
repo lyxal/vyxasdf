@@ -75,7 +75,6 @@ install_version() {
 
         # Move vyxal package
 	mv $HOME/.local/bin/vyxal ./vyxal2
-        mv $PYTHON_DIR .
 
         # Update the shebang to use the exact Python path
         sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
@@ -87,6 +86,7 @@ install_version() {
 	if [ -n "$library_path" ]; then
 	    # Get the directory containing the library
 	    library_dir=$(dirname "$library_path")
+            library_dir="${library_dir/\.\//$install_path/}"
 	    
 	    # Safely update LD_LIBRARY_PATH
 	    if [ -z "${LD_LIBRARY_PATH+x}" ]; then
