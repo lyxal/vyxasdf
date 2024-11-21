@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.6.0](https://github.com/lyxal/vyxasdf/compare/v1.5.0...v1.6.0) (2024-11-21)
+
+
+### Features
+
+* feet ([b155c61](https://github.com/lyxal/vyxasdf/commit/b155c618237718dae5098bc7dee95b67aed53955))
+* use ⋎ flag instead of `h` ([fc9c35e](https://github.com/lyxal/vyxasdf/commit/fc9c35e3622bcc2ddb70d3f10693e5b09ed5c7cc))
+
+
+### Bug Fixes
+
+* fox ([ed152d5](https://github.com/lyxal/vyxasdf/commit/ed152d5e63b22be33702cfee73ac3341602f6074))
+
 ## [1.5.0](https://github.com/lyxal/vyxasdf/compare/v1.4.0...v1.5.0) (2024-11-20)
 
 
