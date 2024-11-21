@@ -62,9 +62,9 @@ install_version() {
         PYTHON_CMD=$(asdf which python)
         $PYTHON_CMD -m venv .venv
 
+        echo "these are the field"
         ls .
-        cd ..
-        ls .
+       
         source .venv/bin/activate
 
         $PYTHON_CMD -m pip install . --user
