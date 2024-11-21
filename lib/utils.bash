@@ -69,8 +69,11 @@ install_version() {
 
         find . -maxdepth 1 ! -name 'vynv' ! -name '.' -exec mv {} vynv/ \;
 
+        cd vynv
         
         $PYTHON_CMD -m pip install . --user
+
+        ls .
 
 
         # Verify the installation
