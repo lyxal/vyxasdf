@@ -64,15 +64,15 @@ install_version() {
         asdf local python 3.9.0
 
         PYTHON_CMD=$(asdf which python)
+        VYTHON="vynv/bin/python3" 
         "$PYTHON_CMD" -m venv vynv --copies
         source vynv/bin/activate
 
-python -m venv --help
-python -c "import sys; print(sys.prefix)"
-        
-        $PYTHON_CMD -m pip install . --user
 
-        $PYTHON_CMD -m pip show vyxal 
+        
+        $VYTHON -m pip install . --user
+
+        $VYTHON -m pip show vyxal 
 
         # Verify the installation
         local tool_cmd
