@@ -71,10 +71,11 @@ install_version() {
                 
                 mv $HOME/.local/bin/vyxal ./vyxal2
 		mv $pyloc .
-                mv "$pyloc/lib" .
+                cd 3.9.0
+		ls .
+                cd ..
 		sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
-                cat vyxal2
-                ls .
+
 
 
 		# Check if vyxal command exists
