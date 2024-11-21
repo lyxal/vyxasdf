@@ -70,7 +70,8 @@ install_version() {
 	        $pypath -m pip install . --user
                 
                 mv $HOME/.local/bin/vyxal ./vyxal2
-		mv $(asdf where python) .
+		mv $pyloc .
+                mv "$pyloc/lib" .
 		sed -i "1c#!$install_path/3.9.0/bin/python3" vyxal2
                 cat vyxal2
                 ls .
