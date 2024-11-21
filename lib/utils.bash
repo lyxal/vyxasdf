@@ -71,17 +71,12 @@ install_version() {
         "$PYTHON_CMD" -m venv vynv --copies
         source vynv/bin/activate
 
- 
+        $VYTHON -m pip install --upgrade cx_Freeze
         $VYTHON -m pip install .
 
-       	# Create a wrapper around the module in the venv
-
- 	cat > vyxal2 << EOF
- 	#!/bin/bash
-        ${VYXAL2} "\$@"
-EOF
-
-        chmod +x vyxal2
+       	# Create the executable
+	cx_freeze --script vyxal/__main__.py --target-name vyxal2 --init-script vyxal/__init__.py
+        ls .
 
         # Verify the installation
         local tool_cmd
