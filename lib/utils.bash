@@ -67,7 +67,7 @@ install_version() {
         ls .
         source .venv/bin/activate
 
-        python3 -m pip install . --user
+        $PYTHON_CMD -m pip install . --user
 
 
         # Verify the installation
