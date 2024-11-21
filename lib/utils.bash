@@ -71,6 +71,9 @@ install_version() {
        
         source .venv/bin/activate
 
+echo "these are the field"
+        ls .
+
         $PYTHON_CMD -m pip install . --user
 
 
