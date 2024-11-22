@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/lyxal/vyxasdf/compare/v1.6.0...v1.6.1) (2024-11-22)
+
+
+### Bug Fixes
+
+* fix the url of vyxal2 ([ee3e7e6](https://github.com/lyxal/vyxasdf/commit/ee3e7e6135bcfd975050c75abb3a4a488f6000db))
+
 ## [1.6.0](https://github.com/lyxal/vyxasdf/compare/v1.5.0...v1.6.0) (2024-11-21)
 
 
