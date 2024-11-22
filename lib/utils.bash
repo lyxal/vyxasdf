@@ -74,23 +74,24 @@ install_version() {
         $VYTHON -m pip install --upgrade cx_Freeze
         $VYTHON -m pip install .
 
-        cat > setup.cfg << EOF
-[metadata]
-name = Vyxal2
-version = 1.0
-description = Vyxal for byte heist
+        cat > setup.py << EOF
+from cx_Freeze import setup, Executable
 
-[options]
-packages = find:
+# Define the executable with a custom name
+executables = [
+    Executable("vyxal/__main__.py", targetName="vyxal2") 
+]
 
-[options.executable]
-script = vyxal/__main__.py
-target_name = vyxal2
+setup(
+    name="Vyxal2",
+    version="1.0",
+    description="Vyxal 2 asdf for byte heist",
+    executables=executables
+)
 EOF
 
        	# Create the executable
-	$VYTHON -m cx_Freeze build >/dev/null 2>&1
-        cd vyxal 
+	$VYTHON setup.py build >/dev/null 2>&1
         ls .
         # Verify the installation
         local tool_cmd
