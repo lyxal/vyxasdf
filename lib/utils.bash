@@ -84,7 +84,7 @@ executables = [
 
 
 build_exe_options = {
-    "packages": ["vyxal"],
+    "packages": [],
     "include_files": [], 
 }
 
