@@ -82,10 +82,17 @@ executables = [
     Executable("vyxal/__main__.py", targetName="vyxal2") 
 ]
 
+
+build_exe_options = {
+    "packages": ["vyxal"],
+    "include_files": [], 
+}
+
 setup(
     name="Vyxal2",
     version="1.0",
     description="Vyxal 2 asdf for byte heist",
+    options={"build_exe": build_exe_options},
     executables=executables
 )
 EOF
