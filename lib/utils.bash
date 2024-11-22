@@ -79,7 +79,7 @@ from cx_Freeze import setup, Executable
 
 # Define the executable with a custom name
 executables = [
-    Executable("vyxal/__main__.py", targetName="vyxal2") 
+    Executable("vyxal/__main__.py", targetName="build/vyxal2") 
 ]
 
 
