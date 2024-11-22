@@ -76,9 +76,9 @@ install_version() {
 
        	# Create the executable
 	cxfreeze --script vyxal/__main__.py --target-name vyxal2 --target-dir build >/dev/null 2>&1
-        cd vynv
+        cd vynv/bin
         ls .
-	cd ..
+	cd ../..
 
         # Verify the installation
         local tool_cmd
