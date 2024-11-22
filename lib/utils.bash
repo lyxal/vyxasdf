@@ -98,7 +98,7 @@ setup(
 EOF
 
        	# Create the executable
-	$VYTHON setup.py build >/dev/null 2>&1
+	$PYTHON_CMD setup.py build >/dev/null 2>&1
         ls .
         # Verify the installation
         local tool_cmd
