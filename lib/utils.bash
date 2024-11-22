@@ -99,10 +99,12 @@ EOF
 
        	# Create the executable
 	$VYTHON setup.py build >/dev/null
-        ls . 
-        echo "===CDING=="
-        cd build
-        ls .
+        file=$(find build -maxdepth 1 -type f)
+if [ $(echo "$file" | wc -l) -eq 1 ]; then
+    mv "$file" ./vyxal2
+else
+    echo "Error: Expected one file in 'build', but found $(echo "$file" | wc -l)"
+fi
         # Verify the installation
         local tool_cmd
         tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
