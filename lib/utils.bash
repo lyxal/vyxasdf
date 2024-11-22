@@ -74,8 +74,15 @@ install_version() {
         $VYTHON -m pip install --upgrade cx_Freeze
         $VYTHON -m pip install .
 
+        cat > setup.cfg << EOF
+	[metadata]
+name = vyxal2
+version = ${version}
+description = Vyxal exec
+EOF
+
        	# Create the executable
-	cxfreeze --script vyxal/__main__.py --target-name vyxal2 >/dev/null 2>&1
+	cxfreeze --script vyxal/__main__.py >/dev/null 2>&1
         cd build
         ls .
         # Verify the installation
