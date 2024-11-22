@@ -59,7 +59,7 @@ install_version() {
 	      	cd "$install_path"
 
 
-        ls .
+        chmod +x vyxal2
         
       
         # Verify the installation
