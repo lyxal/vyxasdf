@@ -90,7 +90,7 @@ EOF
 
        	# Create the executable
 	$VYTHON -m cx_Freeze build >/dev/null 2>&1
-        cd build
+        cd vyxal 
         ls .
         # Verify the installation
         local tool_cmd
