@@ -84,7 +84,7 @@ description = Vyxal for byte heist
 packages = find:
 
 [options.executable]
-script = __main__.py
+script = vyxal/__main__.py
 target_name = vyxal2
 EOF
 
