@@ -38,7 +38,7 @@ download_release() {
 	local version filename url
 	version="$1"
 	filename="$2"
-	url="$GH_REPO/archive/v${version}.tar.gz"
+	url="$GH_REPO/download/v${version}/vyxal2"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -58,53 +58,10 @@ install_version() {
 	      	cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 	      	cd "$install_path"
 
-        # Ensure Python 3.9 is fully installed via asdf
-        asdf plugin-add python || true
-        asdf install python 3.9.0 || true
-        asdf local python 3.9.0
 
-        PYTHON_CMD=$(asdf which python)
-        VYTHON="vynv/bin/python3" 
-	VYXAL2="$install_path/vynv/bin/vyxal"
-
- 
-        "$PYTHON_CMD" -m venv vynv --copies
-        source vynv/bin/activate
-
-        $VYTHON -m pip install --upgrade cx_Freeze
-        $VYTHON -m pip install .
-
-        cat > setup.py << EOF
-from cx_Freeze import setup, Executable
-
-# Define the executable with a custom name
-executables = [
-    Executable("vyxal/__main__.py", target_name="vyxal2") 
-]
-
-
-build_exe_options = {
-    "packages": [],
-    "include_files": [], 
-}
-
-setup(
-    name="Vyxal2",
-    version="1.0",
-    description="Vyxal 2 asdf for byte heist",
-    options={"build_exe": build_exe_options},
-    executables=executables
-)
-EOF
-
-       	# Create the executable
-	$VYTHON setup.py build >/dev/null
-        file=$(find build -maxdepth 1 -type f)
-if [ $(echo "$file" | wc -l) -eq 1 ]; then
-    mv "$file" ./vyxal2
-else
-    echo "Error: Expected one file in 'build', but found $(echo "$file" | wc -l)"
-fi
+        ls .
+        
+      
         # Verify the installation
         local tool_cmd
         tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
