@@ -98,7 +98,9 @@ setup(
 EOF
 
        	# Create the executable
-	$VYTHON setup.py build
+	$VYTHON setup.py build >/dev/null
+        ls . 
+        echo "===CDING=="
         cd build
         ls .
         # Verify the installation
