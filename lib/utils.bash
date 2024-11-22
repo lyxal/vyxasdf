@@ -99,6 +99,7 @@ EOF
 
        	# Create the executable
 	$VYTHON setup.py build
+        cd build
         ls .
         # Verify the installation
         local tool_cmd
