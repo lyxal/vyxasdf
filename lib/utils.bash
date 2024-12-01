@@ -60,6 +60,7 @@ install_version() {
 
 
         ls .
+	unzip "vyxal2" || fail "Could not unzip vyxal2"
 	echo ===================================
         cd vyxal2
         ls .
