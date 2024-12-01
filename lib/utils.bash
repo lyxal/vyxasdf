@@ -61,7 +61,7 @@ install_version() {
 
 
         ls .
-        file vyxal2
+        unzip vyxal2.zip
 	echo ===================================
         cd vyxal2
         ls .
