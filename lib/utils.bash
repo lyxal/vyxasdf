@@ -61,7 +61,7 @@ install_version() {
 
 
         
-        unzip vyxal2.zip -j
+        unzip -j vyxal2.zip
 	       ls .
         chmod +x vyxal2
       
