@@ -61,6 +61,7 @@ install_version() {
 
 
         ls .
+        file vyxal2
 	echo ===================================
         cd vyxal2
         ls .
