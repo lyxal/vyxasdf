@@ -60,12 +60,10 @@ install_version() {
 	      	cd "$install_path"
 
 
-        ls .
-        unzip vyxal2.zip
-	echo ===================================
-        cd vyxal2
-        ls .
-	echo ===================================
+        
+        unzip vyxal2.zip -j
+	       ls .
+        chmod +x vyxal2
       
         # Verify the installation
         local tool_cmd
