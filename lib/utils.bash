@@ -42,7 +42,7 @@ download_release() {
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
-        unzip "$filename" || fail "Could not unzip $filename"
+        echo $filename
 }
 
 install_version() {
