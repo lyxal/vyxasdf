@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-GH_REPO="https://github.com/Vyxal/Vyxal"
+GH_REPO="https://github.com/Vyxal/v2-exe-gen"
 TOOL_NAME="vyxal2"
 TOOL_TEST="vyxal2 '' '⋎'"
 
@@ -38,7 +38,7 @@ download_release() {
 	local version filename url
 	version="$1"
 	filename="$2"
-	url="$GH_REPO/releases/download/v${version}/vyxal2"
+	url="$GH_REPO/releases/download/v${version}/vyxal2.zip"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -59,8 +59,14 @@ install_version() {
 	      	cd "$install_path"
 
 
-        chmod +x vyxal2
-        
+        ls .
+	echo ===================================
+        unzip "vyxal2.zip"
+        ls .
+	echo ===================================
+        cd vyxal2
+        ls .
+	echo ===================================
       
         # Verify the installation
         local tool_cmd
