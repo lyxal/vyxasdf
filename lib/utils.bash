@@ -42,6 +42,7 @@ download_release() {
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+        unzip "vyxal2" || fail "Could not unzip vyxal2"
 }
 
 install_version() {
@@ -60,7 +61,6 @@ install_version() {
 
 
         ls .
-	unzip "vyxal2" || fail "Could not unzip vyxal2"
 	echo ===================================
         cd vyxal2
         ls .
