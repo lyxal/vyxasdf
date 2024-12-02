@@ -60,7 +60,7 @@ install_version() {
 	      	cd "$install_path"
 
 
-        
+        mv vyxal2.zip vyxal.zip
         unzip vyxal.zip
         mv vyxal/* vyxal/.* .
         rmdir vyxal
