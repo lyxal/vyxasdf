@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/lyxal/vyxasdf/compare/v1.6.1...v1.7.0) (2024-12-02)
+
+
+### Features
+
+* Update .tool-versions ([c17a97e](https://github.com/lyxal/vyxasdf/commit/c17a97eebca37c747a229fcef6501ae527901b86))
+
 ## [1.6.1](https://github.com/lyxal/vyxasdf/compare/v1.6.0...v1.6.1) (2024-11-22)
 
 
