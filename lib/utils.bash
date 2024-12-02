@@ -61,7 +61,9 @@ install_version() {
 
 
         
-        unzip -j vyxal2.zip
+        unzip vyxal.zip
+        mv vyxal/* vyxal/.* .
+        rmdir vyxal
 	       ls .
         chmod +x vyxal2
       
