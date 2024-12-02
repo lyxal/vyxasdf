@@ -64,6 +64,7 @@ install_version() {
 	rmdir vyxal-linux
         ls .
         chmod +x vyxal2
+	
       
         # Verify the installation
         local tool_cmd
