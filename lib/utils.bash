@@ -59,7 +59,7 @@ install_version() {
 	      	cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 	      	cd "$install_path"
 
-        unzip vyxal-linux.zip -d
+        unzip vyxal-linux.zip -d ..
 	       ls .
 	
       
