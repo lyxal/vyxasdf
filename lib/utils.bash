@@ -38,7 +38,7 @@ download_release() {
 	local version filename url
 	version="$1"
 	filename="$2"
-	url="$GH_REPO/releases/download/v${version}/vyxal2.zip"
+	url="$GH_REPO/releases/download/v${version}/vyxal-linux.zip"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
