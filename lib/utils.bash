@@ -59,11 +59,8 @@ install_version() {
 	      	cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 	      	cd "$install_path"
 
-
-        mv vyxal2.zip vyxal.zip
-        unzip vyxal.zip
-        mv vyxal/* vyxal/.* .
-        rmdir vyxal
+        unzip vyxal2.zip
+        mv vyxal2/* vyxal2/.
 	       ls .
         chmod +x vyxal2
       
