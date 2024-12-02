@@ -20,7 +20,6 @@
 - `bash`, `curl`, `tar`, and [POSIX utilities](https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html).
 - `poetry` for building vyxal from source.
 
-
 # Install
 
 Plugin:
